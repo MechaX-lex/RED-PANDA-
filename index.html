@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Panda | Cheesecake Japonés</title>
+  <meta name="description" content="Red Panda: cheesecake japonés. Panificación saludable, esponjosa y de deliciosa textura.">
+  <link rel="icon" href="IMG/sello-empresarial.png">
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;900&family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+  <!-- Fallback sin JavaScript -->
+  <noscript><style>.preloader { display: none; } body { opacity: 1; filter: none; transform: none; }</style></noscript>
+</head>
+<body>
+
+  <!-- Capa de Fondo Fija Unificada -->
+  <div class="global-bg-layer" aria-hidden="true"></div>
+
+  <!-- Canvas Global para los Pétalos -->
+  <canvas id="sakura-canvas" aria-hidden="true"></canvas>
+
+  <!-- Pantalla de carga Shoji -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="shoji-frame">
+      <div class="shoji-rail rail-top"></div>
+      
+      <div class="door door-left">
+        <div class="hikite"></div>
+        <div class="corner-hardware hardware-tl"></div>
+        <div class="corner-hardware hardware-bl"></div>
+        <div class="kumiko-grid"></div>
+        <div class="kick-panel"></div>
+      </div>
+
+      <div class="door door-right">
+        <div class="hikite"></div>
+        <div class="corner-hardware hardware-tr"></div>
+        <div class="corner-hardware hardware-br"></div>
+        <div class="kumiko-grid"></div>
+        <div class="kick-panel"></div>
+      </div>
+
+      <div class="center-lock" id="center-lock">
+        <div class="lock-plate">
+          <div class="lock-latch"></div>
+        </div>
+      </div>
+
+      <div class="shoji-rail rail-bottom"></div>
+    </div>
+  </div>
+
+  <header class="nav-bar">
+    <div class="brand-group">
+      <!-- Logo Principal Red Panda -->
+      <a href="#inicio" class="logo">
+        <img src="IMG/Sello empresarial.png" alt="Sello de Red Panda">
+      </a>
+      
+      <!-- Divisor elegante -->
+      <span class="nav-divider" aria-hidden="true"></span>
+      
+      <!-- Logo del Colegio San Josemaría Escrivá de Balaguer -->
+      <div class="colegio-logo" title="IE San Josemaría Escrivá de Balaguer">
+        <img src="IMG/logo colegio.png" alt="Escudo IE San Josemaría Escrivá de Balaguer">
+      </div>
+    </div>
+
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="a-links" id="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">¿Quiénes somos?</a>
+      <a href="#fichas">Fichas Técnicas</a>
+      <a href="#finanzas">Nuestras Finanzas</a>
+      <a href="#contacto">Contáctanos</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="japanese-hero" id="inicio">
+      <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+        <defs>
+          <linearGradient id="barkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#a06a44"/>
+            <stop offset="40%" stop-color="#7a4a2e"/>
+            <stop offset="100%" stop-color="#4a2a18"/>
+          </linearGradient>
+
+          <radialGradient id="petalGradFront" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="50%" stop-color="#ffb7c5"/>
+            <stop offset="100%" stop-color="#ff758c"/>
+          </radialGradient>
+
+          <radialGradient id="petalGradBack" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffc0cb"/>
+            <stop offset="100%" stop-color="#e65c7b"/>
+          </radialGradient>
+
+          <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="1.5"/>
+          </filter>
+
+          <g id="sakuraFlower">
+            <g>
+              <path d="M0,0 C-8,-14 -15,-28 0,-38 C15,-28 8,-14 0,0" fill="url(#petalGradFront)"/>
+              <path d="M0,0 C-8,-14 -15,-28 0,-38 C15,-28 8,-14 0,0" fill="url(#petalGradFront)" transform="rotate(72)"/>
+              <path d="M0,0 C-8,-14 -15,-28 0,-38 C15,-28 8,-14 0,0" fill="url(#petalGradFront)" transform="rotate(144)"/>
+              <path d="M0,0 C-8,-14 -15,-28 0,-38 C15,-28 8,-14 0,0" fill="url(#petalGradFront)" transform="rotate(216)"/>
+              <path d="M0,0 C-8,-14 -15,-28 0,-38 C15,-28 8,-14 0,0" fill="url(#petalGradFront)" transform="rotate(288)"/>
+            </g>
+            <circle cx="0" cy="0" r="4.5" fill="#d93856"/>
+            <path d="M0,0 L-2,-6 M0,0 L2,-6 M0,0 L-6,-1.5 M0,0 L6,-1.5 M0,0 L-4,5 M0,0 L4,5" stroke="#d93856" stroke-width="1"/>
+            <circle cx="-2" cy="-6" r="1" fill="#f1c40f"/>
+            <circle cx="2" cy="-6" r="1" fill="#f1c40f"/>
+            <circle cx="-6" cy="-1.5" r="1" fill="#f1c40f"/>
+            <circle cx="6" cy="-1.5" r="1" fill="#f1c40f"/>
+            <circle cx="-4" cy="5" r="1" fill="#f1c40f"/>
+            <circle cx="4" cy="5" r="1" fill="#f1c40f"/>
+          </g>
+
+          <g id="bgFlower" filter="url(#softBlur)" opacity="0.55">
+            <path d="M0,0 C-6,-11 -12,-22 0,-30 C12,-22 6,-11 0,0" fill="url(#petalGradBack)"/>
+            <path d="M0,0 C-6,-11 -12,-22 0,-30 C12,-22 6,-11 0,0" fill="url(#petalGradBack)" transform="rotate(72)"/>
+            <path d="M0,0 C-6,-11 -12,-22 0,-30 C12,-22 6,-11 0,0" fill="url(#petalGradBack)" transform="rotate(144)"/>
+            <path d="M0,0 C-6,-11 -12,-22 0,-30 C12,-22 6,-11 0,0" fill="url(#petalGradBack)" transform="rotate(216)"/>
+            <path d="M0,0 C-6,-11 -12,-22 0,-30 C12,-22 6,-11 0,0" fill="url(#petalGradBack)" transform="rotate(288)"/>
+          </g>
+
+          <g id="sakuraLeaf">
+            <path d="M0,0 Q10,-12 20,-5 Q10,5 0,0" fill="#6b8e6b" stroke="#4a6e4a" stroke-width="0.8"/>
+          </g>
+
+          <g id="sakuraBud">
+            <path d="M0,0 Q-5,-10 0,-16 Q5,-10 0,0" fill="url(#petalGradBack)"/>
+            <path d="M-2,0 Q-6,-5 -1,-10" stroke="#7a4a2e" stroke-width="1.2" fill="none"/>
+          </g>
+        </defs>
+      </svg>
+
+      <div class="tree-container tree-left reveal-tree">
+        <svg viewBox="-50 -50 700 700" class="tree-svg">
+          <g class="branches">
+            <path d="M-40,-30 C60,40 140,110 240,180 C320,230 400,260 500,240" stroke="url(#barkGradient)" stroke-width="32" fill="none" stroke-linecap="round"/>
+            <path d="M120,95 C190,60 270,30 360,20" stroke="url(#barkGradient)" stroke-width="20" fill="none" stroke-linecap="round"/>
+            <path d="M270,30 C340,10 410,-10 480,-20" stroke="url(#barkGradient)" stroke-width="11" fill="none" stroke-linecap="round"/>
+            <path d="M240,180 C310,150 400,130 490,120" stroke="url(#barkGradient)" stroke-width="18" fill="none" stroke-linecap="round"/>
+            <path d="M400,130 C470,110 530,100 590,95" stroke="url(#barkGradient)" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <path d="M500,240 C550,230 600,210 640,180" stroke="url(#barkGradient)" stroke-width="12" fill="none" stroke-linecap="round"/>
+            <path d="M180,140 C200,200 210,240 220,280" stroke="url(#barkGradient)" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M340,205 C360,260 380,300 390,340" stroke="url(#barkGradient)" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <path d="M470,245 C490,290 510,330 520,360" stroke="url(#barkGradient)" stroke-width="6" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <g class="bg-blossoms">
+            <use href="#bgFlower" x="200" y="50" transform="scale(1.2)"/>
+            <use href="#bgFlower" x="350" y="20" transform="scale(1.3)"/>
+            <use href="#bgFlower" x="480" y="-10" transform="scale(1.1)"/>
+            <use href="#bgFlower" x="380" y="110" transform="scale(1.4)"/>
+            <use href="#bgFlower" x="520" y="90" transform="scale(1.2)"/>
+            <use href="#bgFlower" x="460" y="220" transform="scale(1.3)"/>
+            <use href="#bgFlower" x="580" y="180" transform="scale(1.1)"/>
+            <use href="#bgFlower" x="215" y="260" transform="scale(1.1)"/>
+            <use href="#bgFlower" x="380" y="320" transform="scale(1.2)"/>
+            <use href="#bgFlower" x="510" y="340" transform="scale(1)"/>
+          </g>
+
+          <g class="leaves">
+            <use href="#sakuraLeaf" x="250" y="150" transform="rotate(25)"/>
+            <use href="#sakuraLeaf" x="380" y="120" transform="rotate(-40)"/>
+            <use href="#sakuraLeaf" x="480" y="210" transform="rotate(60)"/>
+            <use href="#sakuraLeaf" x="560" y="170" transform="rotate(-15)"/>
+            <use href="#sakuraLeaf" x="350" y="280" transform="rotate(80)"/>
+            <use href="#sakuraLeaf" x="490" y="310" transform="rotate(45)"/>
+          </g>
+
+          <g class="fg-blossoms">
+            <use href="#sakuraFlower" x="120" y="95" transform="scale(0.9)"/>
+            <use href="#sakuraFlower" x="190" y="60" transform="scale(1.1)"/>
+            <use href="#sakuraFlower" x="270" y="30" transform="scale(1.2)"/>
+            <use href="#sakuraFlower" x="360" y="20" transform="scale(1.15)"/>
+            <use href="#sakuraFlower" x="440" y="5" transform="scale(1)"/>
+            <use href="#sakuraFlower" x="240" y="180" transform="scale(1.2)"/>
+            <use href="#sakuraFlower" x="310" y="150" transform="scale(1)"/>
+            <use href="#sakuraFlower" x="400" y="130" transform="scale(1.25)"/>
+            <use href="#sakuraFlower" x="490" y="120" transform="scale(1.1)"/>
+            <use href="#sakuraFlower" x="570" y="95" transform="scale(1.05)"/>
+            <use href="#sakuraFlower" x="500" y="240" transform="scale(1.3)"/>
+            <use href="#sakuraFlower" x="530" y="220" transform="scale(1.1)"/>
+            <use href="#sakuraFlower" x="560" y="245" transform="scale(1.2)"/>
+            <use href="#sakuraFlower" x="600" y="200" transform="scale(1.15)"/>
+            <use href="#sakuraFlower" x="630" y="180" transform="scale(1)"/>
+            <use href="#sakuraFlower" x="650" y="195" transform="scale(0.85)"/>
+            <use href="#sakuraBud" x="660" y="210" transform="scale(1.2) rotate(45)"/>
+            <use href="#sakuraFlower" x="200" y="200" transform="scale(0.95)"/>
+            <use href="#sakuraFlower" x="220" y="280" transform="scale(1.1)"/>
+            <use href="#sakuraBud" x="225" y="305" transform="scale(1) rotate(90)"/>
+            <use href="#sakuraFlower" x="360" y="260" transform="scale(1)"/>
+            <use href="#sakuraFlower" x="390" y="340" transform="scale(1.15)"/>
+            <use href="#sakuraBud" x="395" y="365" transform="scale(1.1) rotate(80)"/>
+            <use href="#sakuraFlower" x="490" y="290" transform="scale(1.05)"/>
+            <use href="#sakuraFlower" x="520" y="360" transform="scale(1.2)"/>
+            <use href="#sakuraBud" x="525" y="385" transform="scale(1.2) rotate(85)"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="tree-container tree-right reveal-tree">
+        <div class="tree-mirror-wrapper">
+          <svg viewBox="-50 -50 700 700" class="tree-svg">
+            <g class="branches">
+              <path d="M-40,-30 C60,40 140,110 240,180 C320,230 400,260 500,240" stroke="url(#barkGradient)" stroke-width="32" fill="none" stroke-linecap="round"/>
+              <path d="M120,95 C190,60 270,30 360,20" stroke="url(#barkGradient)" stroke-width="20" fill="none" stroke-linecap="round"/>
+              <path d="M270,30 C340,10 410,-10 480,-20" stroke="url(#barkGradient)" stroke-width="11" fill="none" stroke-linecap="round"/>
+              <path d="M240,180 C310,150 400,130 490,120" stroke="url(#barkGradient)" stroke-width="18" fill="none" stroke-linecap="round"/>
+              <path d="M400,130 C470,110 530,100 590,95" stroke="url(#barkGradient)" stroke-width="9" fill="none" stroke-linecap="round"/>
+              <path d="M500,240 C550,230 600,210 640,180" stroke="url(#barkGradient)" stroke-width="12" fill="none" stroke-linecap="round"/>
+              <path d="M180,140 C200,200 210,240 220,280" stroke="url(#barkGradient)" stroke-width="8" fill="none" stroke-linecap="round"/>
+              <path d="M340,205 C360,260 380,300 390,340" stroke="url(#barkGradient)" stroke-width="7" fill="none" stroke-linecap="round"/>
+              <path d="M470,245 C490,290 510,330 520,360" stroke="url(#barkGradient)" stroke-width="6" fill="none" stroke-linecap="round"/>
+            </g>
+            <g class="bg-blossoms">
+              <use href="#bgFlower" x="200" y="50" transform="scale(1.2)"/>
+              <use href="#bgFlower" x="350" y="20" transform="scale(1.3)"/>
+              <use href="#bgFlower" x="480" y="-10" transform="scale(1.1)"/>
+              <use href="#bgFlower" x="380" y="110" transform="scale(1.4)"/>
+              <use href="#bgFlower" x="520" y="90" transform="scale(1.2)"/>
+              <use href="#bgFlower" x="460" y="220" transform="scale(1.3)"/>
+              <use href="#bgFlower" x="580" y="180" transform="scale(1.1)"/>
+              <use href="#bgFlower" x="215" y="260" transform="scale(1.1)"/>
+              <use href="#bgFlower" x="380" y="320" transform="scale(1.2)"/>
+              <use href="#bgFlower" x="510" y="340" transform="scale(1)"/>
+            </g>
+            <g class="leaves">
+              <use href="#sakuraLeaf" x="250" y="150" transform="rotate(25)"/>
+              <use href="#sakuraLeaf" x="380" y="120" transform="rotate(-40)"/>
+              <use href="#sakuraLeaf" x="480" y="210" transform="rotate(60)"/>
+              <use href="#sakuraLeaf" x="560" y="170" transform="rotate(-15)"/>
+              <use href="#sakuraLeaf" x="350" y="280" transform="rotate(80)"/>
+              <use href="#sakuraLeaf" x="490" y="310" transform="rotate(45)"/>
+            </g>
+            <g class="fg-blossoms">
+              <use href="#sakuraFlower" x="120" y="95" transform="scale(0.9)"/>
+              <use href="#sakuraFlower" x="190" y="60" transform="scale(1.1)"/>
+              <use href="#sakuraFlower" x="270" y="30" transform="scale(1.2)"/>
+              <use href="#sakuraFlower" x="360" y="20" transform="scale(1.15)"/>
+              <use href="#sakuraFlower" x="440" y="5" transform="scale(1)"/>
+              <use href="#sakuraFlower" x="240" y="180" transform="scale(1.2)"/>
+              <use href="#sakuraFlower" x="310" y="150" transform="scale(1)"/>
+              <use href="#sakuraFlower" x="400" y="130" transform="scale(1.25)"/>
+              <use href="#sakuraFlower" x="490" y="120" transform="scale(1.1)"/>
+              <use href="#sakuraFlower" x="570" y="95" transform="scale(1.05)"/>
+              <use href="#sakuraFlower" x="500" y="240" transform="scale(1.3)"/>
+              <use href="#sakuraFlower" x="530" y="220" transform="scale(1.1)"/>
+              <use href="#sakuraFlower" x="560" y="245" transform="scale(1.2)"/>
+              <use href="#sakuraFlower" x="600" y="200" transform="scale(1.15)"/>
+              <use href="#sakuraFlower" x="630" y="180" transform="scale(1)"/>
+              <use href="#sakuraFlower" x="650" y="195" transform="scale(0.85)"/>
+              <use href="#sakuraBud" x="660" y="210" transform="scale(1.2) rotate(45)"/>
+              <use href="#sakuraFlower" x="200" y="200" transform="scale(0.95)"/>
+              <use href="#sakuraFlower" x="220" y="280" transform="scale(1.1)"/>
+              <use href="#sakuraBud" x="225" y="305" transform="scale(1) rotate(90)"/>
+              <use href="#sakuraFlower" x="360" y="260" transform="scale(1)"/>
+              <use href="#sakuraFlower" x="390" y="340" transform="scale(1.15)"/>
+              <use href="#sakuraBud" x="395" y="365" transform="scale(1.1) rotate(80)"/>
+              <use href="#sakuraFlower" x="490" y="290" transform="scale(1.05)"/>
+              <use href="#sakuraFlower" x="520" y="360" transform="scale(1.2)"/>
+              <use href="#sakuraBud" x="525" y="385" transform="scale(1.2) rotate(85)"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="glow-bg reveal-bg"></div>
+      <div class="hero-content">
+        <span class="sub-heading reveal-sub">RED PANDA</span>
+        <h1 class="hero-main-title reveal-title">
+          CHEESECAKE <br>
+          <span class="glow-red">JAPONÉS.</span>
+        </h1>
+        <p class="hero-tagline reveal-sub">PANIFICACIÓN SALUDABLE, ESPONJOSA Y DE DELICIOSA TEXTURA.</p>
+        <div>
+          <a href="#fichas" class="btn-cta reveal-btn">Ver fichas técnicas</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Historia y Propósito -->
+    <section class="historia" id="nosotros">
+      <div class="historia-card reveal">
+        <div class="card-colegio-header">
+          <img src="IMG/logo colegio.png" alt="Escudo IE San Josemaría Escrivá de Balaguer" class="badge-colegio">
+          <h2>Nuestra Historia y Propósito</h2>
+          <p class="historia-sub">Big Red Panda Bakery — Técnico Laboral en Panificación · IE San Josemaría Escrivá de Balaguer</p>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" role="tab" aria-selected="true" data-tab="origen">🍰 Origen</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="social">🤝 Solución social</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="sello">🐼 Diferencial y sello</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="espacio">🏪 Nuestro espacio</button>
+        </div>
+
+        <div class="tab-panel active" id="tab-origen">
+          <p>El <em>Cheesecake Soufflé japonés</em> (“pan de nube”) es una preparación emblemática de Japón: suave, ligera y de técnica precisa, horneada al baño María. En <strong>Big Red Panda Bakery</strong> llevamos esta alternativa de panificación más saludable y deliciosa a una escala accesible en Colombia.</p>
+        </div>
+
+        <div class="tab-panel" id="tab-social">
+          <p>En Chía y municipios cercanos, tanto los niños beneficiarios del PAE como los adultos mayores tienen pocas opciones de panificación nutritivas y fáciles de digerir. Con baja cantidad de harina y textura esponjosa, nuestro cheesecake soufflé es una alternativa suave, de fácil masticación y digestión.</p>
+          <div class="chips">
+            <span class="chip">🥚 Huevo batido</span>
+            <span class="chip">🧀 Queso crema</span>
+            <span class="chip">🌽 Maicena</span>
+            <span class="chip">🍦 Vainilla</span>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-sello">
+          <div class="mini-grid">
+            <div class="mini"><span>🌸</span><strong>Textura liviana</strong><p>Fácil masticación y digestión.</p></div>
+            <div class="mini"><span>🌱</span><strong>Empaque sostenible</strong><p>Cartón Kraft reciclable y biodegradable.</p></div>
+            <div class="mini"><span>🈴</span><strong>Sello Hanko</strong><p>Identidad inspirada en los sellos tradicionales japoneses.</p></div>
+          </div>
+        </div>
+
+        <!-- Pestaña "Nuestro Espacio" -->
+        <div class="tab-panel" id="tab-espacio">
+          <div class="space-tab-container">
+            <div class="space-img-frame" data-lightbox>
+              <img src="IMG/plano red panda.jpeg" 
+                   alt="Plano 3D isométrico del local con zonas de producción, hornos, atención al cliente y áreas de trabajo" 
+                   width="610" height="470" loading="lazy" 
+                   data-title="Plano 3D de The Big Red Panda Bakery" 
+                   data-caption="Distribución arquitectónica e isométrica de nuestro local comercial en Chía.">
+            </div>
+            <p class="space-tab-desc">
+              Así será nuestra panadería: zonas de mezclado, hornos, fermentación y almacén, atención al cliente y espacios de trabajo.
+            </p>
+            <button class="fc-btn-pill" data-lightbox>🔍 Ampliar plano</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN FICHAS TÉCNICAS (SHADOW DOM) -->
+    <section class="section fichas-section" id="fichas">
+      <div id="fc-root"></div>
+    </section>
+
+    <div class="gold-divider" aria-hidden="true"></div>
+
+    <section class="section" id="finanzas">
+      <div class="container reveal">
+        <h2 class="finanzas-title">Nuestras Finanzas</h2>
+        <p class="section-intro finanzas-subtitle">Las cifras clave del proyecto, de un vistazo.</p>
+        <div class="card-grid">
+          <article class="card stat stat-card-light">
+            <span class="icon">💰</span>
+            <span class="num counter-num nowrap-val" data-target="13909122" data-prefix="$ " data-suffix=" COP">$ 13.909.122 COP</span>
+            <p class="stat-label">Inversión inicial</p>
+          </article>
+          <article class="card stat stat-card-light">
+            <span class="icon">🏷️</span>
+            <span class="num counter-num nowrap-val" data-target="20000" data-prefix="$ " data-suffix=" COP">$ 20.000 COP</span>
+            <p class="stat-label">Precio de venta</p>
+          </article>
+          <article class="card stat stat-card-light">
+            <span class="icon">📈</span>
+            <span class="num counter-num nowrap-val" data-target="2257" data-prefix="" data-suffix=" uds.">2.257 uds.</span>
+            <p class="stat-label">Punto de equilibrio mensual</p>
+          </article>
+        </div>
+        <p class="finanzas-disclaimer">
+          Cifras proyectadas del modelo financiero (ventas mensuales proyectadas: $54.000.000 COP). No son resultados comerciales ni garantía de rentabilidad.
+        </p>
+      </div>
+    </section>
+
+    <div class="gold-divider" aria-hidden="true"></div>
+
+    <section class="section" id="contacto">
+      <div class="container reveal">
+        <h2>Contáctanos</h2>
+        <p class="section-intro">¿Quieres hacer un pedido o tienes una pregunta? Escríbenos.</p>
+        <div class="contact-wrap">
+          <form class="contact-form" id="contact-form">
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+            <input type="email" name="correo" placeholder="Tu correo" required>
+            <textarea name="mensaje" rows="4" placeholder="Tu mensaje" required></textarea>
+            <button type="submit" class="btn-cta">Enviar mensaje</button>
+            <p id="form-msg" role="status"></p>
+          </form>
+          <ul class="contact-info">
+            <li class="card">📧 correo@ejemplo.com</li>
+            <li class="card">📱 @redpanda</li>
+            <li class="card">
+              📍 Chía, Cundinamarca (Sabana de Bogotá)<br>
+              <button class="contact-map-link" id="open-plan-contact">Ver plano del local</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
